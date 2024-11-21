@@ -7,94 +7,95 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f4f4f4;
-            padding: 20px;
+            margin: 20px;
+            background-color: #f8f9fa;
         }
         h1 {
-            margin-bottom: 20px;
+            text-align: center;
         }
         .video-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin: 0 -10px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            justify-items: center;
         }
-        .video-wrapper {
-            margin: 10px;
-            border: 2px solid #ccc;
+        .video {
+            background-color: #fff;
             border-radius: 8px;
             overflow: hidden;
-            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
         video {
-            max-width: 300px;
-            max-height: 200px;
-            display: block;
+            max-width: 100%;
+        }
+        .title {
+            text-align: center;
+            padding: 10px;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
 
-    <h1>DrivingRecon: Large 4D Gaussian Reconstruction Model For Autonomous Driving</h1>
-    <div class="video-container">
-        <div class="video-wrapper">
-            <video controls>
-                <source src="scene1.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <p>Scene 1</p>
-        </div>
-        <div class="video-wrapper">
-            <video controls>
-                <source src="scene2.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <p>Scene 2</p>
-        </div>
-        <div class="video-wrapper">
-            <video controls>
-                <source src="scene3.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <p>Scene 3</p>
-        </div>
-        <div class="video-wrapper">
-            <video controls>
-                <source src="scene4.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <p>Scene 4</p>
-        </div>
-        <div class="video-wrapper">
-            <video controls>
-                <source src="scene5.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <p>Scene 5</p>
-        </div>
-        <div class="video-wrapper">
-            <video controls>
-                <source src="scene6.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <p>Scene 6</p>
-        </div>
-        <div class="video-wrapper">
-            <video controls>
-                <source src="scene7.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <p>Scene 7</p>
-        </div>
-        <div class="video-wrapper">
-            <video controls>
-                <source src="scene8.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <p>Scene 8</p>
-        </div>
+<h1>DrivingRecon: Large 4D Gaussian Reconstruction Model For Autonomous Driving</h1>
+<div class="video-container">
+    <div class="video">
+        <div class="title">Scene 1</div>
+        <video controls>
+            <source src="scene1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
     </div>
+    <div class="video">
+        <div class="title">Scene 2</div>
+        <video controls>
+            <source src="scene2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <div class="video">
+        <div class="title">Scene 3</div>
+        <video controls>
+            <source src="scene3.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <div class="video">
+        <div class="title">Scene 4</div>
+        <video controls>
+            <source src="scene4.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <div class="video">
+        <div class="title">Scene 5</div>
+        <video controls>
+            <source src="scene5.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <div class="video">
+        <div class="title">Scene 6</div>
+        <video controls>
+            <source src="scene6.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <div class="video">
+        <div class="title">Scene 7</div>
+        <video controls>
+            <source src="scene7.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <div class="video">
+        <div class="title">Scene 8</div>
+        <video controls>
+            <source src="scene8.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+</div>
 
 </body>
 </html>
