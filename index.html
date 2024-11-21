@@ -1,100 +1,253 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DrivingRecon: Large 4D Gaussian Reconstruction Model For Autonomous Driving</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f4f4f4;
-            padding: 20px;
-        }
-        h1 {
-            margin-bottom: 20px;
-        }
-        .video-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin: 0 -10px;
-        }
-        .video-wrapper {
-            margin: 10px;
-            border: 2px solid #ccc;
-            border-radius: 8px;
-            overflow: hidden;
-            background-color: white;
-        }
-        video {
-            max-width: 300px;
-            max-height: 200px;
-            display: block;
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="FreeVS: Generative View Synthesis on Free Driving Trajectory">
+  <meta name="keywords" content="Ba^2-Det">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FreeVS: Generative View Synthesis on Free Driving Trajectory</title>
+
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script> 
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
 </head>
 <body>
 
-    <h1>DrivingRecon: Large 4D Gaussian Reconstruction Model For Autonomous Driving</h1>
-    <div class="video-container">
-        <div class="video-wrapper">
-            <video controls>
-                <source src="scene1.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <p>Scene 1</p>
+
+<!-- <section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-2 publication-title"></h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              Anonymous Authors
+          </div>
         </div>
-        <div class="video-wrapper">
-            <video controls>
-                <source src="./scene2.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <p>Scene 2</p>
-        </div>
-        <div class="video-wrapper">
-            <video controls>
-                <source src="scene3.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <p>Scene 3</p>
-        </div>
-        <div class="video-wrapper">
-            <video controls>
-                <source src="scene4.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <p>Scene 4</p>
-        </div>
-        <div class="video-wrapper">
-            <video controls>
-                <source src="scene5.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <p>Scene 5</p>
-        </div>
-        <div class="video-wrapper">
-            <video controls>
-                <source src="scene6.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <p>Scene 6</p>
-        </div>
-        <div class="video-wrapper">
-            <video controls>
-                <source src="scene7.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <p>Scene 7</p>
-        </div>
-        <div class="video-wrapper">
-            <video controls>
-                <source src="scene8.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <p>Scene 8</p>
-        </div>
+      </div>
     </div>
+  </div>
+</section> -->
+<section class="hero">
+ <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">FreeVS: Generative View Synthesis on Free Driving Trajectory</h1>
+          <!-- <h2 class="title is-3">CVPR 2024</h2> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  
+<!-- <section class="section">
+  <div class="container is-max-desktop has-text-centered"> 
+    <h2 class="title is-3">Introduction Video</h2>
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <video poster="" id="intro" autoplay controls muted loop playsinline width="100%">
+          <source src="" type="video/mp4">
+        </video>
+        </div>
+     </div>
+  </div>
+</section> -->
+  
+<section class="section">
+  <!-- Paper video. -->
+ <div class="container is-max-desktop has-text-centered"> 
+<h2 class="title is-3">Free-Trajectory View Generation Demos</h2>
+<div class="columns is-centered">
+  <div class="column">
+  <div class="content">
+    
+   <div class="content has-text-centered">
+    <h2 class="title is-4">Scene 1 (GT Video)</h2>
+     <video poster="" id="wod" autoplay controls muted loop playsinline width="100%">
+       <source src="./scene1.mp4" type="video/mp4">
+     </video>
+ </div>
+  </div>
+  </div>
+  
+  <div class="column">
+   <div class="content has-text-centered">
+    <h2 class="title is-4">Scene 1 (Novel Trajectory)</h2>
+     <video poster="" id="wod" autoplay controls muted loop playsinline width="100%">
+       <source src="./scene2.mp4" type="video/mp4">
+     </video>
+     </div>
+  </div>
+</div>
+<div class="columns is-centered">
+  <div class="column">
+  <div class="content">
+    
+   <div class="content has-text-centered">
+    <h2 class="title is-4">Scene 2 (GT Video)</h2>
+     <video poster="" id="wod" autoplay controls muted loop playsinline width="100%">
+      <source src="./static/videos/8822503619482926605_1080_000_1100_000_FRONT_gt.mp4" type="video/mp4">
+     </video>
+ </div>
+  </div>
+  </div>
+  
+  <div class="column">
+   <div class="content has-text-centered">
+    <h2 class="title is-4">Scene 2 (Novel Trajectory)</h2>
+     <video poster="" id="wod" autoplay controls muted loop playsinline width="100%">
+      <source src="./static/videos/8822503619482926605_1080_000_1100_000_FRONT.mp4" type="video/mp4">
+     </video>
+     </div>
+  </div>
+</div>
+<div class="columns is-centered">
+  <div class="column">
+  <div class="content">
+    
+   <div class="content has-text-centered">
+    <h2 class="title is-4">Scene 3 (GT Video)</h2>
+     <video poster="" id="wod" autoplay controls muted loop playsinline width="100%">
+       <source src="./static/videos/4702302448560822815_927_380_947_380_FRONT_gt.mp4" type="video/mp4">
+     </video>
+ </div>
+  </div>
+  </div>
+  
+  <div class="column">
+   <div class="content has-text-centered">
+    <h2 class="title is-4">Scene 3 (Novel Trajectory)</h2>
+     <video poster="" id="wod" autoplay controls muted loop playsinline width="100%">
+       <source src="./static/videos/4702302448560822815_927_380_947_380_FRONT.mp4" type="video/mp4">
+     </video>
+     </div>
+  </div>
+</div>
+
+<div class="columns is-centered">
+  <div class="column">
+  <div class="content">
+    
+   <div class="content has-text-centered">
+    <h2 class="title is-4">Scene 4 (GT Video)</h2>
+     <video poster="" id="wod" autoplay controls muted loop playsinline width="100%">
+       <source src="./static/videos/3451017128488170637_5280_000_5300_000_FRONT_gt.mp4" type="video/mp4">
+     </video>
+ </div>
+  </div>
+  </div>
+  
+  <div class="column">
+   <div class="content has-text-centered">
+    <h2 class="title is-4">Scene 4 (Novel Trajectory)</h2>
+     <video poster="" id="wod" autoplay controls muted loop playsinline width="100%">
+       <source src="./static/videos/3451017128488170637_5280_000_5300_000_FRONT.mp4" type="video/mp4">
+     </video>
+     </div>
+  </div>
+</div>
+    
+
+<div class="columns is-centered">
+  <div class="column">
+  <div class="content">
+   <div class="content has-text-centered">
+    <h2 class="title is-4">Scene 5 (GT Video)</h2>
+     <video poster="" id="wod" autoplay controls muted loop playsinline width="100%">
+       <source src="./static/videos/13476374534576730229_240_000_260_000_FRONT_gt.mp4" type="video/mp4">
+     </video>
+ </div>
+  </div>
+  </div>
+  
+  <div class="column">
+   <div class="content has-text-centered">
+    <h2 class="title is-4">Scene 5 (Novel Trajectory)</h2>
+     <video poster="" id="wod" autoplay controls muted loop playsinline width="100%">
+       <source src="./static/videos/13476374534576730229_240_000_260_000_FRONT.mp4" type="video/mp4">
+     </video>
+     </div>
+  </div>
+</div>
+
+
+<section class="section">
+  <!-- Paper video. -->
+ <div class="container is-max-desktop has-text-centered"> 
+<h2 class="title is-3">Modifying Objets in Scene</h2>
+<div class="columns is-centered">
+  <div class="column">
+  <div class="content">
+    
+   <div class="content has-text-centered">
+    <h2 class="title is-4">Scene 1 (GT Video)</h2>
+     <video poster="" id="wod" autoplay controls muted loop playsinline width="100%">
+       <source src="./static/videos/12505030131868863688_1740_000_1760_000_FRONT_edit_gt.mp4" type="video/mp4">
+     </video>
+ </div>
+  </div>
+  </div>
+  
+  <div class="column">
+   <div class="content has-text-centered">
+    <h2 class="title is-4">Scene 1 (Modifying Object Appearance)</h2>
+     <video poster="" id="wod" autoplay controls muted loop playsinline width="100%">
+       <source src="./static/videos/12505030131868863688_1740_000_1760_000_FRONT_edit.mp4" type="video/mp4">
+     </video>
+     </div>
+  </div>
+</div>
+<div class="columns is-centered">
+  <div class="column">
+  <div class="content">
+    
+   <div class="content has-text-centered">
+    <h2 class="title is-4">Scene 2 (GT Video)</h2>
+     <video poster="" id="wod" autoplay controls muted loop playsinline width="100%">
+       <source src="./static/videos/11566385337103696871_5740_000_5760_000_FRONT_edit_gt.mp4" type="video/mp4">
+     </video>
+ </div>
+  </div>
+  </div>
+  
+  <div class="column">
+   <div class="content has-text-centered">
+    <h2 class="title is-4">Scene 2 (Modifying Object Position)</h2>
+     <video poster="" id="wod" autoplay controls muted loop playsinline width="100%">
+       <source src="./static/videos/11566385337103696871_5740_000_5760_000_FRONT_edit.mp4" type="video/mp4">
+     </video>
+     </div>
+  </div>
+</div>
+
+<section class="section"></section>
+<div class="container is-max-desktop has-text-centered"> 
+  <h2 class="title is-3">Compare with SOTA NVS methods</h2>
+<div class="content has-text-centered">
+  <!-- <h2 class="title is-4">=</h2> -->
+   <video poster="" id="wod" autoplay controls muted loop playsinline width="50%">
+     <source src="./static/videos/FreeVS_demo.mov" type="video/mp4">
+   </video>
+</div>
+</section>
 
 </body>
 </html>
